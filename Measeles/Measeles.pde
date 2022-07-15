@@ -6,6 +6,7 @@ float xleftmouth, yleftmouth, xrightmouth, yrightmouth;
 float xmeasle, ymeasle, measleDiameter;
 float xcenter, ycenter, faceradius;
 color resetWhite = #FFFFFF, red = #C62000;
+color backgroundcolor;
 Boolean nightMode=false;
 int thick=50, reset=1;
 //
@@ -41,8 +42,7 @@ void setup ()
   yrightmouth = yrighteye + 300;
   measleDiameter = SmallerDimension*1/random(50, 15);
   //
- 
-  color backgroundcolor = ( nightMode==true ) ? color (random (255), random(255), 0 )  : color (random (255), random(255), random(255) )  ;
+  backgroundcolor = ( nightMode==true ) ? color (random (255), random(255), 0 )  : color (random (255), random(255), random(255) )  ;
   background(backgroundcolor);
   ellipse(xface, yface, widthdiamaterface, heightdiamaterface);
   line(xleftmouth, yleftmouth, xrightmouth, yrightmouth);
@@ -73,14 +73,28 @@ void keyPressed () {
 }
 
 void mousePressed () {
+  if ( mouseButton == LEFT) {
+   color backgroundcolor =  color (random (255), random(255), random(255) )  ;
+   background(backgroundcolor);
+   ellipse(xface, yface, widthdiamaterface, heightdiamaterface);
+  } //end lmb
+  if ( mouseButton == RIGHT) {
+    color backgroundcolor = color (random (255), random(255), 0 ) ;
+   background(backgroundcolor);
+   ellipse(xface, yface, widthdiamaterface, heightdiamaterface);
+  } //end rmb
+  //if ( mouseButton == WHEEL) {}
+  //
+  /*
   if(nightMode==false) {
     nightMode = true;
   } else {
     nightMode = false;
-  
   } //end night mode
-  /*
-  color backgroundcolor = ( nightMode==true ) ? color (random (255), random(255), 0 )  : color (random (255), random(255), random(255) )  ;
-  background(backgroundcolor);
+   backgroundcolor = ( nightMode==true ) ? color (random (255), random(255), 0 )  : color (random (255), random(255), random(255) )  ;
+   background(backgroundcolor);
+   ellipse(xface, yface, widthdiamaterface, heightdiamaterface);
+   color backgroundcolor = ( nightMode==true ) ? color (random (255), random(255), 0 )  : color (random (255), random(255), random(255) )  ;
+   background(backgroundcolor);
   */
 }
