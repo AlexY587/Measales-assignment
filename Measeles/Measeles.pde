@@ -3,6 +3,7 @@ float xface, yface, widthdiamaterface, heightdiamaterface, SmallerDimension;
 float xlefteye, ylefteye, eyediamater, xrighteye, yrighteye;
 float xnosebridige,ynosebridige,xleftnostril,yleftnostril,xrightnostril,yrightnostril;
 float xleftmouth, yleftmouth, xrightmouth, yrightmouth;
+float xleftmustache, yleftmustache, xrightmustache, yrightmustache;
 float xmeasle, ymeasle, measleDiameter;
 float xcenter, ycenter, faceradius;
 color resetWhite = #FFFFFF, red = #C62000;
@@ -36,16 +37,20 @@ void setup ()
   yleftnostril = heightdiamaterface/3 + 150;
   xrightnostril = xrighteye - 100;
   yrightnostril = heightdiamaterface/3 + 150;
+  xleftmustache = xlefteye;
+  yleftmustache = ylefteye + 300;
+  xrightmustache = xrighteye;
+  yrightmustache = yrighteye + 300;
   xleftmouth = xlefteye;
-  yleftmouth = ylefteye + 300;
+  yleftmouth = ylefteye + 200;
   xrightmouth = xrighteye;
-  yrightmouth = yrighteye + 300;
-  measleDiameter = SmallerDimension*1/random(50, 15);
+  yrightmouth = yrighteye + 200;
   //
   backgroundcolor = ( nightMode==true ) ? color (random (255), random(255), 0 )  : color (random (255), random(255), random(255) )  ;
   background(backgroundcolor);
   ellipse(xface, yface, widthdiamaterface, heightdiamaterface);
   line(xleftmouth, yleftmouth, xrightmouth, yrightmouth);
+  line(xleftmustache, yleftmustache, xrightmustache, yrightmustache);
   
   
 }
@@ -63,6 +68,7 @@ void draw ()
   ymeasle = random(0, SmallerDimension);// if there is zero first then default
   fill(red);
   noStroke();
+  measleDiameter = SmallerDimension/random(50, 1);
   ellipse(xmeasle, ymeasle, measleDiameter, measleDiameter);
   stroke(1);
   fill(resetWhite);
