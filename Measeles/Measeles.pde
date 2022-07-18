@@ -73,7 +73,6 @@ void draw ()
   xmeasle = randX;
   ymeasle = randY;
   rootOP = sqrt(pow((randX - xcenter),2) + pow((randY - ycenter),2));
-  
   if (rootOP > faceradius) {
   xmeasle = 1000;
   ymeasle = 1000;
