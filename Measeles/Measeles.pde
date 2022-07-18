@@ -6,6 +6,8 @@ float xleftmouth, yleftmouth, xrightmouth, yrightmouth;
 float xleftmustache, yleftmustache, xrightmustache, yrightmustache;
 float xmeasle, ymeasle, measleDiameter;
 float xcenter, ycenter, faceradius;
+float randX, randY, rootOP;
+float randSize;
 color resetWhite = #FFFFFF, red = #C62000;
 color backgroundcolor;
 Boolean nightMode=false;
@@ -51,7 +53,9 @@ void setup ()
   ellipse(xface, yface, widthdiamaterface, heightdiamaterface);
   line(xleftmouth, yleftmouth, xrightmouth, yrightmouth);
   line(xleftmustache, yleftmustache, xrightmustache, yrightmustache);
-  
+  println(heightdiamaterface);
+  println(widthdiamaterface);
+  println(faceradius);
   
 }
 
@@ -64,11 +68,21 @@ void draw ()
   strokeWeight(thick);
   line(xleftmouth, yleftmouth, xrightmouth, yrightmouth);
   strokeWeight(reset);
-  xmeasle = random( xcenter - faceradius, xcenter + faceradius);
-  ymeasle = random(0, SmallerDimension);// if there is zero first then default
+  randX = random( xcenter - faceradius, xcenter + faceradius);
+  randY = random(0, SmallerDimension);// if there is zero first then default
+  xmeasle = randX;
+  ymeasle = randY;
+  rootOP = sqrt(pow((randX - xcenter),2) + pow((randY - ycenter),2));
+  
+  if (rootOP > faceradius) {
+  xmeasle = 1000;
+  ymeasle = 1000;
+  } else {
+  } 
+  randSize = random(25, 50);
   fill(red);
   noStroke();
-  measleDiameter = SmallerDimension/random(50, 1);
+  measleDiameter = SmallerDimension/randSize;
   ellipse(xmeasle, ymeasle, measleDiameter, measleDiameter);
   stroke(1);
   fill(resetWhite);
