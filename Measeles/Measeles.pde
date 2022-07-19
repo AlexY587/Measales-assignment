@@ -56,11 +56,13 @@ void setup ()
   println(heightdiamaterface);
   println(widthdiamaterface);
   println(faceradius);
+  rect( xcenter - faceradius, 0,2*faceradius, SmallerDimension );
   
 }
 
 void draw () 
 {
+  line(xleftmustache, yleftmustache, xrightmustache, yrightmustache);
   ellipse(xlefteye, ylefteye, eyediamater, eyediamater);
   ellipse(xrighteye, yrighteye, eyediamater, eyediamater);
   triangle(xnosebridige,ynosebridige,xleftnostril,yleftnostril,xrightnostril,yrightnostril);
@@ -74,10 +76,7 @@ void draw ()
   ymeasle = randY;
   rootOP = sqrt(pow((randX - xcenter),2) + pow((randY - ycenter),2));
   if (rootOP > faceradius) {
-  xmeasle = 1000;
-  ymeasle = 1000;
   } else {
-  } 
   randSize = random(25, 50);
   fill(red);
   noStroke();
@@ -85,6 +84,7 @@ void draw ()
   ellipse(xmeasle, ymeasle, measleDiameter, measleDiameter);
   stroke(1);
   fill(resetWhite);
+  } 
 
 }
 
