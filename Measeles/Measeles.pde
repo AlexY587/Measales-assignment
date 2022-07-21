@@ -18,7 +18,7 @@ int thick=50, reset=1;
 String title = "MEASELS!", nightbuttonText = "NightMode", nightbuttonSwitch = "", startbuttonText = "BEGIN THE MEASELS", quitbuttonText = "Quit";
 float titleX, titleY, titleWidth, titleHeight;
 PFont titlefont;
-color blue=#0027FC, resetdefualtink=#FFFFFF, nightTint=#FFFFFF;//Not nightMode friendly
+color blue=#0027FC, resetdefualtink=#FFFFFF, nightTint=#FFFFFF, fillButton=#FFFFFF;//Not nightMode friendly
 int titleSize, nightTitlesize, startTitlesize, quitTitlesize;
 //
 void setup () 
@@ -30,8 +30,13 @@ populatingVariables();
 
 void draw () 
 {
+  if (mouseX>nightbuttonX && mouseX<nightbuttonX+nightbuttonWidth && mouseY>nightbuttonY && mouseY<nightbuttonY+nightbuttonWidth) {
+    fillButton = grey;
+  } else {
+    fillButton = resetWhite;
+  } //endhoverover
     nightTitlesize = 20;
-  fill(nightTint);
+  fill(fillButton);
   rect(nightbuttonX, nightbuttonY, nightbuttonWidth, nightbuttonHeight);
   fill(black);
   textFont(titlefont, nightTitlesize);
