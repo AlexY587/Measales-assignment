@@ -1,4 +1,43 @@
 void populatingVariables() {
+  pic = loadImage("Top-Hat-Transparent-PNG.png");
+  int picwidth = 512;
+  int picheight = 512;
+  if (picwidth >= picheight) {
+  imageLargerDimension = picwidth;
+  imageSmallerDimension = picheight;
+  widthLarger = true;
+} else {
+  //false if portrait
+  imageLargerDimension = picheight;
+  imageSmallerDimension = picwidth;
+  heightLarger = true;
+ }//end image dimension comparison
+  //Aspect Ratio
+//single line ifs can be sumarazed into if else or if-else-if-else
+//computer choooses which formula to execute
+imageWidthRatio = 1;
+imageHeightRatio = 1;
+if (widthLarger == true) imageWidthRatio = imageLargerDimension / imageLargerDimension;
+if (widthLarger == true) imageHeightRatio = imageSmallerDimension / imageLargerDimension;
+if (heightLarger == true) imageWidthRatio = imageSmallerDimension / imageLargerDimension;
+if (heightLarger == true) imageHeightRatio = imageLargerDimension / imageLargerDimension;
+//
+//answers must be 1.0 and between 0 and 1 decomal
+//Ratio of 1.0 similar to style="width:100%" (websites)
+//println also verifies decimal places
+//ratio of 0-1 similar to style="height:ratio" (websites)
+//
+//Population
+imageX = width/8;
+imageY = -height/1.2;
+imagewidth = width-1;//Canvas (0,0) means point doesnt match to rectangle missing outline on two sides
+imageheight = height-1;
+//
+//Combunatuin of population of image with population of rect()
+//adjusted image variabels for aspect ratio, entire image will be smaller
+picWidthAdjusted = imagewidth * imageWidthRatio;
+picHeightAdjusted = imageheight * imageHeightRatio;
+println(imageX, imageY, picWidthAdjusted, picHeightAdjusted);
   xface = width/2;
   yface = height/2;
   if (width >= height) {

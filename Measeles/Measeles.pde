@@ -18,8 +18,14 @@ int thick=50, reset=1;
 String title = "MEASELS!", nightbuttonText = "NightMode", nightbuttonSwitch = "", startbuttonText = "BEGIN THE MEASELS", quitbuttonText = "Quit";
 float titleX, titleY, titleWidth, titleHeight;
 PFont titlefont;
-color blue=#0027FC, resetdefualtink=#FFFFFF, nightTint=#FFFFFF, fillButton=#FFFFFF;//Not nightMode friendly
+color blue=#0027FC, resetdefualtink=#FFFFFF, nightTint=#FFFFFF, tintButton=#835600;//nightmode friendly
+color fillButtonNight=#FFFFFF, fillButtonStart=#FFFFFF, fillButtonQuit=#FFFFFF;
 int titleSize, nightTitlesize, startTitlesize, quitTitlesize;
+float imageX, imageY, imagewidth, imageheight, picWidthAdjusted, picHeightAdjusted;
+Boolean widthLarger = false, heightLarger = false;
+float imageLargerDimension, imageSmallerDimension;
+float imageWidthRatio, imageHeightRatio;
+PImage pic;
 //
 void setup () 
 {
@@ -31,12 +37,34 @@ populatingVariables();
 void draw () 
 {
   if (mouseX>nightbuttonX && mouseX<nightbuttonX+nightbuttonWidth && mouseY>nightbuttonY && mouseY<nightbuttonY+nightbuttonWidth) {
-    fillButton = grey;
+    if (nightMode == true) {
+      fillButtonNight = tintButton;
+    } else {
+    fillButtonNight = grey;
+    }
   } else {
-    fillButton = resetWhite;
+    fillButtonNight = nightTint;
+  } //endhoverover
+    if (mouseX>startbuttonX && mouseX<startbuttonX+startbuttonWidth && mouseY>startbuttonY && mouseY<startbuttonY+startbuttonWidth) {
+    if (nightMode == true) {
+      fillButtonStart = tintButton;
+    } else {
+    fillButtonStart = grey;
+    }
+  } else {
+    fillButtonStart = nightTint;
+  } //endhoverover
+    if (mouseX>quitX && mouseX<quitX+quitWidth && mouseY>quitY && mouseY<quitY+quitWidth) {
+    if (nightMode == true) {
+      fillButtonQuit = tintButton;
+    } else {
+    fillButtonQuit = grey;
+    }
+  } else {
+    fillButtonQuit = nightTint;
   } //endhoverover
     nightTitlesize = 20;
-  fill(fillButton);
+  fill(fillButtonNight);
   rect(nightbuttonX, nightbuttonY, nightbuttonWidth, nightbuttonHeight);
   fill(black);
   textFont(titlefont, nightTitlesize);
@@ -53,6 +81,7 @@ void draw ()
   }
   nightTitlesize = 20;
   fill(nightTint);
+  fill(fillButtonNight);
   rect(nightbuttonX, nightbuttonY, nightbuttonWidth, nightbuttonHeight);
   fill(black);
   textFont(titlefont, nightTitlesize);
@@ -65,7 +94,7 @@ void draw ()
   fill(resetWhite);
   //start
   quitTitlesize = 20;
-  fill(nightTint);
+  fill(fillButtonQuit);
   rect(quitX, quitY, quitWidth, quitHeight);
   fill(black);
   textFont(titlefont, quitTitlesize);
@@ -75,7 +104,7 @@ void draw ()
   //
   //start
   startTitlesize = 20;
-  fill(nightTint);
+  fill(fillButtonStart);
   rect(startbuttonX, startbuttonY, startbuttonWidth, startbuttonHeight);
   fill(black);
   textFont(titlefont, startTitlesize);
@@ -122,7 +151,7 @@ void draw ()
   }
 
   } 
-
+image(pic,imageX, imageY, picHeightAdjusted, picWidthAdjusted);
 }
 
 void keyPressed () {
