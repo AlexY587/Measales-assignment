@@ -11,7 +11,7 @@ float randSize;
 float nightbuttonX, nightbuttonY,nightbuttonWidth, nightbuttonHeight;
 float startbuttonX, startbuttonY, startbuttonWidth, startbuttonHeight;
 float quitX, quitY, quitWidth, quitHeight;
-color resetWhite = #FFFFFF, red = #C62000, black = #000005, green = #0EFF03, colorvariable;
+color resetWhite = #FFFFFF, red = #C62000, black = #000005, green = #0EFF03, colorvariable, grey = #B4AFAF;
 color backgroundcolor;
 Boolean nightMode=false, started = false, usure = false;
 int thick=50, reset=1;
@@ -159,7 +159,7 @@ void mousePressed () {
    if ( mouseButton == LEFT) {
     if (usure == false) {
      usure = true;
-     quitbuttonText = "Are You Sure";
+     quitbuttonText = "Are You Sure?";
    } else {
      exit();
    
